@@ -79,12 +79,44 @@ LICENÇA - Copyright 2018 Gabriel, Lucas, Luiz, Maria Eduarda, Maria Victória e
   ------------------------------------------------------------------------------------      
 
  */
+ 
+#include <AcceleroMMA7361.h>
+ 
+AcceleroMMA7361 giroscopio;
 
-void setup(){
+int x;
+int y;
+int z;
+int buzzer = 9;
+ 
+void setup()
+{
+  pinMode(buzzer, OUTPUT);
+  Serial.begin(9600);
+  giroscopio.begin(13, 12, 11, 10, A0, A1, A2);
+  giroscopio.setARefVoltage(3.3);  //sets the AREF voltage to 3.3V
+  giroscopio.setSensitivity(LOW);  //sets the sensitivity to +/-6G
+  giroscopio.calibrate();
 
 }
-
-void loop(){
+ 
+void loop()
+{
+  x = giroscopio.getXRaw();
+  y = giroscopio.getYRaw();
+  z = giroscopio.getZRaw();
+  Serial.print("x: ");
+  Serial.println(x);
+  Serial.print("Y: ");
+  Serial.println(y);
+  Serial.print("Z: ");
+  Serial.println(z);
+  Serial.println();
   
+  if(y>700){
+     digitalWrite(buzzer,HIGH);                                  
+  }
+  else{
+    digitalWrite(buzzer,LOW);
+  }
 }
-
