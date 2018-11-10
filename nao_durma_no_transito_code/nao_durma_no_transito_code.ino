@@ -13,7 +13,9 @@
   #Repositório do projeto no GitHub: https://github.com/Diocesano/nao_durma
   
   #Descrição:
-  
+  -> O nosso projeto tem o objetivo de diminuir o número de acidentes no trânsito causados
+    por sonolência. O intúito do giroscópio é para assim que o indivíduo abaixe a cabeça no cochilo,
+    um sinal ser enviado ao buzzer e assim ele apitará acordando o condutor.
  
   #Componentes:
     ->1 placa baseada no Arduino Uno R3, utilizando o
